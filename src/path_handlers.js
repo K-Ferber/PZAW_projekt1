@@ -1,21 +1,7 @@
-import { readFileSync } from "node:fs";
-        function show_image(src, width, height,alt) {
-            // Create a new image element
-            let img = document.createElement("img");
+import { readFile, readFileSync } from "node:fs";
 
-            // Set the source, width, 
-            // height, and alt attributes
-            img.src = src;
-            img.width = width;
-            img.height = height;
-            img.alt = alt;
-
-            // Append the image element
-            // to the body of the document
-            document.body.appendChild(img);
-        }
 const index_html = readFileSync("static/index.html");
-
+const iconka = readFileSync("static/icon.html");
 const pathConfigs = [
   {
     path: "/",
@@ -29,17 +15,18 @@ const pathConfigs = [
     path: "/hello",
     allowed_methods: ["GET"],
     handler: (req, res) => {
-      // res.writeHead(200, { "Content-Type": "text/plain" });
-      // res.end("hello world!\n");
-      show_image("/home/studenpdnt/first-project/public/12384883_su45220.jpg", 300, 300, "logo")
+      res.writeHead(200, { "Content-Type": "text/plain" });
+      res.end("hello world!\n");
     },
   },
     {
     path: "/favicon.ico",
     allowed_methods: ["GET"],
     handler: (req, res) => {
-      res.writeHead(200, { "Content-Type": "text/plain" });
-      res.end("he\n");
+      // res.writeHead(200, { "Content-Type": "text/plain" });
+      // res.end("he\n");
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.end(iconka);
     },
   },
 ];
